@@ -1,0 +1,3 @@
+INSTALLATION OF DEPENDECIES
+===========================
+//=> npm install @reduxjs/toolkit react-redux
