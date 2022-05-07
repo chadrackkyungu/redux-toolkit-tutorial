@@ -1,13 +1,9 @@
-import React, { useState } from 'react'
-
 import { useDispatch } from 'react-redux';
-import { closeModal } from '../Redux/Slices/modalSlice'
-import { ClearCart } from '../Redux/Slices/cartSlice';
+import { clearCart } from '../features/cart/cartSlice';
+import { closeModal } from '../features/modal/modalSlice';
 
 const Modal = () => {
-
   const dispatch = useDispatch();
-
   return (
     <aside className='modal-container'>
       <div className='modal'>
@@ -17,7 +13,7 @@ const Modal = () => {
             type='button'
             className='btn confirm-btn'
             onClick={() => {
-              dispatch(ClearCart());
+              dispatch(clearCart());
               dispatch(closeModal());
             }}
           >

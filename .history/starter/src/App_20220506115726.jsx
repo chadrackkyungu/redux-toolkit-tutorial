@@ -14,26 +14,12 @@ function App() {
   const state_cartItem = useSelector(cartItem);
   const state_isOpen = useSelector(isOpen);
   const state_isLoading = useSelector(isLoading);
-
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
    dispatch(calculateTotals())
   }, [state_cartItem]);
-
-
-  useEffect(() => {
-    dispatch(getCartItems());
-  }, []);
-  
-
-  if (state_isLoading) {
-    return (
-      <div className='loading'>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
 
   return (
     <>

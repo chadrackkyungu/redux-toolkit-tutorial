@@ -26,7 +26,6 @@ export const getCartItems = createAsyncThunk('cart/getCartItems', async (thunkAP
 const initialState = {
   // cartItem: cartItems,  //! before the API, i was using the Object
   cartItem: [],
-  
   amount: 6,
   total: 0,
   isLoading: true,

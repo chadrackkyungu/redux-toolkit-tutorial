@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-
 import { useDispatch } from 'react-redux';
-import { closeModal } from '../Redux/Slices/modalSlice'
+import { closeModal, openModal } from '../Redux/Slices/modalSlice'
 import { ClearCart } from '../Redux/Slices/cartSlice';
 
 const Modal = () => {
@@ -26,9 +25,9 @@ const Modal = () => {
           <button
             type='button'
             className='btn clear-btn'
-            onClick={() => {
-              dispatch(closeModal());
-            }}
+            // onClick={() => {
+            //   dispatch(closeModal());
+            // }}
           >
             cancel
           </button>

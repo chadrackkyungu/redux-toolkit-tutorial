@@ -1,32 +1,9 @@
 //! This is our State
-import axios from 'axios';
-import { createAsyncThunk,createSlice } from '@reduxjs/toolkit'; //this is when you are working with an  //! API
+import { createSlice } from '@reduxjs/toolkit';
 import cartItems from '../../cartItems'; //an array
-const url = 'https://course-api.com/react-useReducer-cart-project';
-
-//* Using Fetch
-// export const getCartItems = createAsyncThunk('cart/getCartItems', () => {
-//   return fetch(url)
-//     .then((resp) => resp.json())
-//     .catch((err) => console.log(err));
-// });
-
-//* Using Axios
-export const getCartItems = createAsyncThunk('cart/getCartItems', async (thunkAPI) => {
- try {
-   console.log(thunkAPI);
-   const resp = await axios(url);
-   return resp.data;
- } catch (err) {
-   console.log(err);
- }
-});
-
 
 const initialState = {
-  // cartItem: cartItems,  //! before the API, i was using the Object
-  cartItem: [],
-  
+  cartItem: cartItems,
   amount: 6,
   total: 0,
   isLoading: true,
@@ -37,6 +14,7 @@ const cartSlice = createSlice({
   initialState, // state
 
   reducers: {
+
     ClearCart: (state) => {
       state.cartItem = []; // empty the state
       state.amount = 0
@@ -60,7 +38,6 @@ const cartSlice = createSlice({
     },
 
     calculateTotals: (state) => {
-      console.log(state);
       let amount = 0;
       let total = 0;
       state.cartItem.forEach((item) => {
@@ -70,26 +47,8 @@ const cartSlice = createSlice({
       state.amount = amount;
       state.total = total;
     },
+
   },
-
-
-  //! whenever working with and API
-  extraReducers:{
-    [getCartItems.pending]: (state) =>{
-      state.isLoading = true
-    },
-
-    [getCartItems.fulfilled]: (state, action) =>{
-      console.log(action);
-      state.isLoading = false;
-      state.cartItem = action.payload // here am passing the data from the API to to my initial state call [cartItem]
-    },
-
-    [getCartItems.rejected]: (state) =>{
-      state.isLoading = false;
-    }
-  }
-
 });
 
 //go inside [initialState] & pull me out cartItem
@@ -99,7 +58,7 @@ export const total = (state) => state.cart.total
 export const isLoading = (state) => state.cart.isLoading
 
 //Actions
-export const { ClearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions;
+export const { ClearCart, removeItem } = cartSlice.actions;
 
 // Export Slice
 export default cartSlice.reducer;

@@ -1,6 +1,6 @@
 //! This is our State
 import axios from 'axios';
-import { createAsyncThunk,createSlice } from '@reduxjs/toolkit'; //this is when you are working with an  //! API
+import { createAsyncThunk,createSlice,thunkAPI } from '@reduxjs/toolkit'; //this is when you are working with an  //! API
 import cartItems from '../../cartItems'; //an array
 const url = 'https://course-api.com/react-useReducer-cart-project';
 
@@ -26,7 +26,6 @@ export const getCartItems = createAsyncThunk('cart/getCartItems', async (thunkAP
 const initialState = {
   // cartItem: cartItems,  //! before the API, i was using the Object
   cartItem: [],
-  
   amount: 6,
   total: 0,
   isLoading: true,

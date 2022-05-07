@@ -12,9 +12,8 @@ const url = 'https://course-api.com/react-useReducer-cart-project';
 // });
 
 //* Using Axios
-export const getCartItems = createAsyncThunk('cart/getCartItems', async (thunkAPI) => {
+export const getCartItems = createAsyncThunk('cart/getCartItems', async () => {
  try {
-   console.log(thunkAPI);
    const resp = await axios(url);
    return resp.data;
  } catch (err) {
@@ -26,7 +25,6 @@ export const getCartItems = createAsyncThunk('cart/getCartItems', async (thunkAP
 const initialState = {
   // cartItem: cartItems,  //! before the API, i was using the Object
   cartItem: [],
-  
   amount: 6,
   total: 0,
   isLoading: true,
